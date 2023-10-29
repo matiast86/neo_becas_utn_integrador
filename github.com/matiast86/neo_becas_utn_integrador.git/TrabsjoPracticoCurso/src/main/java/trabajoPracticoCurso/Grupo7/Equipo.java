@@ -1,7 +1,8 @@
 package trabajoPracticoCurso.Grupo7;
 
-public class Equipo {
+import java.util.Objects;
 
+public class Equipo {
 	
 	private String nombre;
 
@@ -12,7 +13,6 @@ public class Equipo {
 	public Equipo(String nombre) {
 		
 		this.nombre=nombre;
-
 	}
 	
 	
@@ -23,5 +23,23 @@ public class Equipo {
 	}
 
 	
+	@Override
+	public int hashCode() {
+		return Objects.hash(nombre);
+	}
+
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Equipo other = (Equipo) obj;
+		return Objects.equals(nombre, other.nombre);
+	}
 	
 }
