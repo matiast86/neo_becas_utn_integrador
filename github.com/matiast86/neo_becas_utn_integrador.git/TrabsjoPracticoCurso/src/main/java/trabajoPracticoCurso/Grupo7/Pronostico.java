@@ -8,14 +8,42 @@ public class Pronostico {
 	resultadoEnum resultado;
 	
 	
-	public Pronostico (Partido p, Equipo e, resultadoEnum r) {
+	public Pronostico (Partido partido, Equipo equipo, resultadoEnum resultado) {
 		
-		this.partido=p;
-		this.equipo=e;
-		this.resultado=r;
-		
+		this.partido=partido;
+		this.equipo=equipo;
+		this.resultado=resultado;
 	}
 
 
+	
+	public int puntos () {
+		if(getPartido().resultado(getEquipo()).equals(resultado)) {
+			return 1;
+		}
+		return 0;
+	}
+	
+	
+	public Partido getPartido() {
+		return this.partido;
+	}
+
+
+
+
+	public Equipo getEquipo() {
+		return equipo;
+	}
+
+
+
+
+	public resultadoEnum getResultado() {
+		return resultado;
+	}
+
+
+	
 
 }
