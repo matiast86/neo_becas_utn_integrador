@@ -53,6 +53,12 @@ public class LectorDeArchivos {
 		
 	}
     
+	
+	public ArrayList<Partido> listaPartidos(){
+		return null;
+	}
+		
+	
 }		
 	
 
