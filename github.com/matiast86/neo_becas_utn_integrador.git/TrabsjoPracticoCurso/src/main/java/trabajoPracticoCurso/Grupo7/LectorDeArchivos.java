@@ -31,6 +31,8 @@ public class LectorDeArchivos {
             e.printStackTrace();
   
         }
+        
+        
     }
 
     public void parsearArchivoResultados() {
@@ -46,9 +48,10 @@ public class LectorDeArchivos {
          
         }
     }
-//	public ArrayList<pronosticos> listarPronosticos(){
-//		
-//	}
+	public ArrayList<Pronostico> listarPronosticos(){
+		return null;
+		
+	}
     
 }		
 	
