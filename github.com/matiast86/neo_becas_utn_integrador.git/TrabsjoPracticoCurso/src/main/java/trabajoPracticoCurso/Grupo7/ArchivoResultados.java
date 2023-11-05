@@ -8,10 +8,10 @@ public class ArchivoResultados {
 	private String equipo1;
 	
 	@CsvBindByPosition(position = 1)
-	private char goles1;
+	private int goles1;
 	
 	@CsvBindByPosition(position = 2)
-	private char goles2;
+	private int goles2;
 	
 	@CsvBindByPosition(position = 3)
 	private String equipo2;
@@ -24,7 +24,7 @@ public class ArchivoResultados {
 		this.equipo1 = equipo1;
 	}
 
-	public char getGoles1() {
+	public int getGoles1() {
 		return goles1;
 	}
 
@@ -32,7 +32,7 @@ public class ArchivoResultados {
 		this.goles1 = goles1;
 	}
 
-	public char getGoles2() {
+	public int getGoles2() {
 		return goles2;
 	}
 
