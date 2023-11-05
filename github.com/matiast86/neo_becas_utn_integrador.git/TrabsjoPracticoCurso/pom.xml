@@ -4,7 +4,7 @@
 
   <groupId>trabajoPracticoCurso</groupId>
   <artifactId>Grupo7</artifactId>
-  <version>urs</version>
+  <version>1.0.0</version>
   <packaging>maven-plugin</packaging>
 
   <name>Grupo7 Maven Plugin</name>
