@@ -1,6 +1,6 @@
 package trabajoPracticoCurso.Grupo7;
 
-import java.util.ArrayList;
+
 
 public class Partido {
 
