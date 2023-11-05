@@ -6,20 +6,32 @@ import com.opencsv.bean.CsvBindByPosition;
 public class ArchivosPronosticos {
 	
 	@CsvBindByPosition(position = 0)
-	private String equipo1;
+	private String apostador;
 	
 	@CsvBindByPosition(position = 1)
-	private char gana1;
+	private String equipo1;
 	
 	@CsvBindByPosition(position = 2)
-	private char empata;
+	private char gana1;
 	
 	@CsvBindByPosition(position = 3)
-	private char gana2;
+	private char empata;
 	
 	@CsvBindByPosition(position = 4)
+	private char gana2;
+	
+	@CsvBindByPosition(position = 5)
 	private String equipo2;
+	
 
+	public String getApostador() {
+		return apostador;
+	}
+	
+	public void setApostador(String apostador) {
+		this.apostador = apostador;
+	}
+	
 	public String getEquipo1() {
 		return equipo1;
 	}

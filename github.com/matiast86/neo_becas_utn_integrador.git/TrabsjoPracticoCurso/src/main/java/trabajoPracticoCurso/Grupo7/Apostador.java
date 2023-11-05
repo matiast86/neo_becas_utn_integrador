@@ -1,17 +1,41 @@
 package trabajoPracticoCurso.Grupo7;
 
+import java.util.ArrayList;
+
 public class Apostador {
 
 	private String nombre;
-	private String apellido;
-	private int dni;
-	private String apuesta;
+	private ArrayList<Pronostico> pronostico;
+	private int puntos;
+	
+	public Apostador(String nombre) {
+		this.nombre = nombre;
+		this.pronostico = new ArrayList<Pronostico>();
+		this.puntos = 0;
+	}
 	
 	
 	//metodos
 	
 	
 	
+	 public void agregarPronosticos(Pronostico pronostico) {
+		 this.pronostico.add(pronostico);
+	 }
+
+	
+	
+	/*
+	 * public int recibirPuntos(arrayDePartidos){ int puntosTotales = 0; int
+	 * sumaDePuntos;
+	 * 
+	 * 
+	 * sumaDePuntos = puntosTotales + puntosObtenidos;
+	 */
+		
+		
+	
+
 	//getters y setters
 	public String getNombre() {
 		return nombre;
@@ -19,23 +43,19 @@ public class Apostador {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getApellido() {
-		return apellido;
+
+	public ArrayList<Pronostico> getPronostico() {
+		return pronostico;
 	}
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
+	public void setPronostico(ArrayList<Pronostico> pronostico) {
+		this.pronostico = pronostico;
 	}
-	public int getDni() {
-		return dni;
+	
+	public int getPuntos() {
+		return puntos;
 	}
-	public void setDni(int dni) {
-		this.dni = dni;
-	}
-	public String getApuesta() {
-		return apuesta;
-	}
-	public void setApuesta(String apuesta) {
-		this.apuesta = apuesta;
+	public void setPuntos(int puntos) {
+		this.puntos = puntos;
 	}
 	
 	

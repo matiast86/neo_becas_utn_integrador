@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Inicio {
 
 	public static void main(String[] args) {
-		//C:\Users\Pais Gamer\git\TrabajoCursoJava\github.com\matiast86\neo_becas_utn_integrador.git\TrabsjoPracticoCurso\src\main\archivos
+		//src\main\archivos\pronosticos.csv
 		
 		if(args.length==0) {
 			System.out.println("ERROR: No ingrestaste ningun archivo como argumento!");
@@ -28,7 +28,7 @@ public class Inicio {
 			//elimino un partido que se crea sin valores en la ultima posicion del array
 			partidos.remove(partidos.size()-1);
 	 
-			ArrayList<Pronostico> pronosticos = lectorArchivosPronostico.listarPronosticos(partidos);		
+			ArrayList<Pronostico> pronosticos = lectorArchivosPronostico.listarPronosticos(partidos);
 			
 			System.out.println(pronosticos.size());
 			
