@@ -26,15 +26,19 @@ public class Inicio {
 			lectorArchivosPronostico.parsearArchivoPronosticos();
 			
 			//elimino un partido que se crea sin valores en la ultima posicion del array
-			partidos.remove(partidos.size()-1);
 	 
 			ArrayList<Pronostico> pronosticos = lectorArchivosPronostico.listarPronosticos(partidos);
 			
-			System.out.println(pronosticos.size());
+			//System.out.println(pronosticos.size());
+			
 			
 
+  
 		
 		}
 	
 	}
+	
+	
+	
 }
