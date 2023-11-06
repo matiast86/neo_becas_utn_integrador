@@ -19,7 +19,7 @@ public class LectorDeArchivos {
         resultadosList = new ArrayList<>();
     }
 
-    public void parsearArchivoPronosticos() {
+    public  List<ArchivosPronosticos> parsearArchivoPronosticos() {
         try {
             pronosticosList = new CsvToBeanBuilder<ArchivosPronosticos>(new FileReader(this.rutaArchivo))
                     .withSkipLines(1)
@@ -31,11 +31,11 @@ public class LectorDeArchivos {
             e.printStackTrace();
   
         }
-        
+        return pronosticosList;
         
     }
 
-    public void parsearArchivoResultados() {
+    public List<ArchivoResultados> parsearArchivoResultados() {
         try {
             resultadosList = new CsvToBeanBuilder<ArchivoResultados>(new FileReader(this.rutaArchivo))
                     .withSkipLines(1)
@@ -47,76 +47,13 @@ public class LectorDeArchivos {
             e.printStackTrace();
          
         }
+        
+        return resultadosList;
     }
-	public ArrayList<Pronostico> listarPronosticos(ArrayList<Partido> PartidosRealizados){
-		ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
-		
-		for (ArchivosPronosticos lineaArchivoPronostico : this.pronosticosList) {
-			 String chequeoEquipo1= lineaArchivoPronostico.getEquipo1();
-			 String chequeoEquipo2= lineaArchivoPronostico.getEquipo2();
-			Pronostico nuevoPronostico =null;
-			for(Partido p : PartidosRealizados){
-				 //chequeo
-				 System.out.println(chequeoEquipo1);
-				 System.out.println(chequeoEquipo2);
-				 //
-				 
-				 
-				if(p.getEquipo1().getNombre().equals(chequeoEquipo1) && p.getEquipo2().getNombre().equals(chequeoEquipo2)){
-					if(lineaArchivoPronostico.getGana1()=='X') {
-						nuevoPronostico = new Pronostico (p,p.getEquipo1(),resultadoEnum.Ganador);  
-					}
-					else if (lineaArchivoPronostico.getGana2()=='X') {
-						nuevoPronostico = new Pronostico (p,p.getEquipo2(),resultadoEnum.Ganador);  
-					}
-					else {
-						nuevoPronostico = new Pronostico (p,p.getEquipo1(),resultadoEnum.Empato);
-					}
-					
-				}
-				 
-				 
-			 }
-			
-			if(!pronosticos.contains(nuevoPronostico)) {
-				pronosticos.add(nuevoPronostico);
-				System.out.println("pronostico creado");
-			}
-			
-		
-		}
-		
-		
-		return pronosticos;
-		
-	}
+    
 
-
-   
 	
-	public ArrayList<Partido> listaPartidos(){
-		ArrayList<Partido> partidos = new ArrayList<Partido>();
-		
-		for(ArchivoResultados lineaArchivoResultado : this.resultadosList) {
-			Equipo nuevoEquipo1= new Equipo(lineaArchivoResultado.getEquipo1());
-			Equipo nuevoEquipo2= new Equipo(lineaArchivoResultado.getEquipo2());
-			
-			
-			
-			
-			Partido nuevoPartido= new Partido (nuevoEquipo1,nuevoEquipo2, lineaArchivoResultado.getGoles1(),lineaArchivoResultado.getGoles2());
-			
-			
-			if(!partidos.contains(nuevoPartido)) {
-				partidos.add(nuevoPartido);
-			}
-		}
-		
-		
-		
-		return partidos;
-	}
-		
+	
 	
 }		
 	

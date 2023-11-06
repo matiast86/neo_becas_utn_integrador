@@ -8,6 +8,11 @@ public class Apostador {
 	private ArrayList<Pronostico> pronostico;
 	private int puntos;
 	
+	
+	
+	
+	
+	
 	public Apostador(String nombre) {
 		this.nombre = nombre;
 		this.pronostico = new ArrayList<Pronostico>();
@@ -16,8 +21,6 @@ public class Apostador {
 	
 	
 	//metodos
-	
-	
 	
 	 public void agregarPronosticos(Pronostico pronostico) {
 		 this.pronostico.add(pronostico);
