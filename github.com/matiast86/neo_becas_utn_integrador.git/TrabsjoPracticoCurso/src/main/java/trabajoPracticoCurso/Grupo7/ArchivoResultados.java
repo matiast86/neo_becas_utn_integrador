@@ -4,18 +4,35 @@ import com.opencsv.bean.CsvBindByPosition;
 
 public class ArchivoResultados {
 	
+	
 	@CsvBindByPosition(position = 0)
-	private String equipo1;
+	private int ronda;
 	
 	@CsvBindByPosition(position = 1)
-	private int goles1;
+	private String equipo1;
 	
 	@CsvBindByPosition(position = 2)
-	private int goles2;
+	private int goles1;
 	
 	@CsvBindByPosition(position = 3)
+	private int goles2;
+	
+	@CsvBindByPosition(position = 4)
 	private String equipo2;
 
+	
+	
+	
+	public int getRonda() {
+		return ronda;
+	}
+	
+	public void setRonda(int ronda) {
+		this.ronda = ronda;
+	
+	}
+	
+	
 	public String getEquipo1() {
 		return equipo1;
 	}
