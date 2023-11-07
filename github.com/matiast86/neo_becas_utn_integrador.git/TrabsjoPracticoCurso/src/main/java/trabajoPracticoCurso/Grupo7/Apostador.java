@@ -8,6 +8,11 @@ public class Apostador {
 	private ArrayList<Pronostico> pronostico;
 	private int puntos;
 	
+	
+	
+	
+	
+	
 	public Apostador(String nombre) {
 		this.nombre = nombre;
 		this.pronostico = new ArrayList<Pronostico>();
@@ -16,8 +21,6 @@ public class Apostador {
 	
 	
 	//metodos
-	
-	
 	
 	 public void agregarPronosticos(Pronostico pronostico) {
 		 this.pronostico.add(pronostico);
@@ -58,5 +61,22 @@ public class Apostador {
 		this.puntos = puntos;
 	}
 	
+	public static boolean ApostadorEstaEnLista(String apostador, ArrayList<Apostador> apostadoresCreados) {
+		for(Apostador a : apostadoresCreados) {
+			if(a.getNombre().equals(apostador)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static Apostador obtenerApostador(String apostador, ArrayList<Apostador> apostadoresCreados) {
+		for(Apostador a : apostadoresCreados) {
+			if(a.getNombre().equals(apostador)) {
+				return a;
+			}
+		}
+		return null;
+	}
 	
 }
