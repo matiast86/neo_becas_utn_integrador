@@ -61,5 +61,22 @@ public class Apostador {
 		this.puntos = puntos;
 	}
 	
+	public static boolean ApostadorEstaEnLista(String apostador, ArrayList<Apostador> apostadoresCreados) {
+		for(Apostador a : apostadoresCreados) {
+			if(a.getNombre().equals(apostador)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static Apostador obtenerApostador(String apostador, ArrayList<Apostador> apostadoresCreados) {
+		for(Apostador a : apostadoresCreados) {
+			if(a.getNombre().equals(apostador)) {
+				return a;
+			}
+		}
+		return null;
+	}
 	
 }

@@ -28,6 +28,26 @@ public class Ronda {
 	}
 	
 
+	public static Ronda obtenerRondaConNumero(int numeroRonda, ArrayList<Ronda> rondas) {
+		for (Ronda r : rondas) {
+			if (r.getNro() == numeroRonda) {
+				return r;
+			}
+		}
+		return null;
+
+	}
+	
+	
+	public static boolean estaEnLista(int numeroRonda, ArrayList<Ronda> rondas) {
+		for (Ronda r : rondas) {
+			if (r.getNro() == numeroRonda) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	
 	
 	
