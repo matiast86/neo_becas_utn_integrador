@@ -21,13 +21,40 @@ public class Inicio {
 			LectorDeArchivos lectorArchivosResultado = new LectorDeArchivos(args[0]);
 			lectorArchivosResultado.parsearArchivoResultados();
 			
-			ArrayList<Partido> partidos = lectorArchivosResultado.listaPartidos();
 			LectorDeArchivos lectorArchivosPronostico = new LectorDeArchivos(args[1]);
 			lectorArchivosPronostico.parsearArchivoPronosticos();
 			
-			//elimino un partido que se crea sin valores en la ultima posicion del array
+			
+			CreadorDeObjeto creadorObjetos = new CreadorDeObjeto(lectorArchivosPronostico.parsearArchivoPronosticos(),lectorArchivosResultado.parsearArchivoResultados());
+			
+			ArrayList<Ronda> rondas = creadorObjetos.ListarRonda();
+			
+			
+			for (Ronda r : rondas) {
+				
+				System.out.println("numero de ronda"  +  " " + r.getNro());
+				
+				System.out.println("Partidos la Ronda");
+				
+				for(Partido p : r.getPartidos()) {
+					
+					System.out.println("-----------------------");
+					System.out.println(p.getEquipo1().getNombre() + " " +p.getGolesEquipo1());
+					System.out.println(p.getEquipo2().getNombre() + " " +p.getGolesEquipo2());
+					System.out.println("-----------------------");
+					
+					
+				}
+				
+				
+				
+				
+				
+			}
+			
+			
 	 
-			ArrayList<Pronostico> pronosticos = lectorArchivosPronostico.listarPronosticos(partidos);
+
 			
 			//System.out.println(pronosticos.size());
 			
