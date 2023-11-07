@@ -27,7 +27,7 @@ public class LectorDeArchivos {
                     .withType(ArchivosPronosticos.class)
                     .build()
                     .parse();
-        } catch (IllegalStateException | FileNotFoundException e) {
+        } catch (IllegalStateException | FileNotFoundException e ) {
             e.printStackTrace();
   
         }
