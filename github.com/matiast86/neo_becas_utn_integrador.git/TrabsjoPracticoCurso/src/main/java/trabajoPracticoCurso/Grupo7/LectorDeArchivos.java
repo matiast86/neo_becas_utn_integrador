@@ -27,7 +27,7 @@ public class LectorDeArchivos {
                     .withType(ArchivosPronosticos.class)
                     .build()
                     .parse();
-        } catch (IllegalStateException | FileNotFoundException e ) {
+        } catch (IllegalStateException | FileNotFoundException | ArrayIndexOutOfBoundsException e ) {
             e.printStackTrace();
   
         }
@@ -43,7 +43,7 @@ public class LectorDeArchivos {
                     .withType(ArchivoResultados.class)
                     .build()
                     .parse();
-        } catch (IllegalStateException | FileNotFoundException e) {
+        } catch (IllegalStateException | FileNotFoundException | ArrayIndexOutOfBoundsException e) {
             e.printStackTrace();
          
         }

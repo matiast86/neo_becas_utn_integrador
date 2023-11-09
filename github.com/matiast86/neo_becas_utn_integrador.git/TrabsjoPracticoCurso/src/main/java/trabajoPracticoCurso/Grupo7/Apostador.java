@@ -1,6 +1,7 @@
 package trabajoPracticoCurso.Grupo7;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Apostador {
 
@@ -28,13 +29,18 @@ public class Apostador {
 
 	
 	
-	/*
-	 * public int recibirPuntos(arrayDePartidos){ int puntosTotales = 0; int
-	 * sumaDePuntos;
-	 * 
-	 * 
-	 * sumaDePuntos = puntosTotales + puntosObtenidos;
-	 */
+
+	 public int obtenerPuntos(List listaDePronosticos, List listaDePartidos){ 
+		 listaDePronosticos = List<Pronosticos>
+		 listaDePartidos = List<Partidos>
+		 int puntosTotales = 0;
+		 
+		 if 
+	 }
+	 sumaDePuntos;
+	 
+	 
+	 sumaDePuntos = puntosTotales + puntosObtenidos;
 		
 		
 	
