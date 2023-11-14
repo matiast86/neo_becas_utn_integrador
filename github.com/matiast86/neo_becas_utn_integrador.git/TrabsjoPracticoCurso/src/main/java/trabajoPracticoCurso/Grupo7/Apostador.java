@@ -29,18 +29,26 @@ public class Apostador {
 
 	
 	
+	
+	 
+	 
+	 public int obtenerPuntos(ArrayList<Partido> listaDePartidos) {
+		    int puntos = 0;
 
-	 public int obtenerPuntos(List listaDePronosticos, List listaDePartidos){ 
-		 listaDePronosticos = List<Pronosticos>
-		 listaDePartidos = List<Partidos>
-		 int puntosTotales = 0;
-		 
-		 if 
-	 }
-	 sumaDePuntos;
-	 
-	 
-	 sumaDePuntos = puntosTotales + puntosObtenidos;
+		    for (Pronostico pronostico : this.pronostico) {
+		        Partido partido = pronostico.getPartido();
+		        resultadoEnum resultadoPronostico = pronostico.getResultado();
+		        resultadoEnum resultadoReal = partido.resultado(null);
+
+		        // Compara el pronostico con resultados
+		        if (resultadoPronostico.equals(resultadoReal)) {
+		            puntos += 1;
+		        }
+		    }
+
+		    return puntos;
+		}
+
 		
 		
 	
