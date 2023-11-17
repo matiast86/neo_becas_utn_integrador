@@ -3,9 +3,9 @@ package trabajoPracticoCurso.Grupo7;
 public class Pronostico {
 
 	
-	Partido partido;
-	Equipo equipo;
-	resultadoEnum resultado;
+	private Partido partido;
+	private Equipo equipo;
+	private resultadoEnum resultado;
 	
 	
 	public Pronostico (Partido partido, Equipo equipo, resultadoEnum resultado) {

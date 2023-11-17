@@ -3,7 +3,7 @@ package trabajoPracticoCurso.Grupo7;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreadorDeObjeto {
+public class CreadorDeObjetoCSV {
 
 	
     List<ArchivosPronosticos> pronosticosList;
@@ -11,7 +11,7 @@ public class CreadorDeObjeto {
     
     
     
-    public CreadorDeObjeto (List<ArchivosPronosticos> pronosticoObtenido,List<ArchivoResultados> resultadoObtenido) {
+    public CreadorDeObjetoCSV (List<ArchivosPronosticos> pronosticoObtenido,List<ArchivoResultados> resultadoObtenido) {
     	this.pronosticosList=pronosticoObtenido;
     	this.resultadosList=resultadoObtenido;
     }
@@ -19,7 +19,6 @@ public class CreadorDeObjeto {
 	
 	public ArrayList<Apostador> listarApostadores(ArrayList<Ronda> RondasRealizadas) {
 		ArrayList<Apostador> apostadoresCreados = new ArrayList<Apostador>();
-		ArrayList<Pronostico> pronosticos = new ArrayList<Pronostico>();
 
 		for (ArchivosPronosticos lineaArchivoPronostico : this.pronosticosList) {
 			Apostador apostadorSeleccionado;
@@ -33,11 +32,13 @@ public class CreadorDeObjeto {
 			int chequeoRonda = lineaArchivoPronostico.getRonda();
 			String chequeoEquipo1 = lineaArchivoPronostico.getEquipo1();
 			String chequeoEquipo2 = lineaArchivoPronostico.getEquipo2();
-			Pronostico nuevoPronostico = null;
+			Pronostico nuevoPronostico = null ;
 			
 			if(Ronda.estaEnLista(chequeoRonda, RondasRealizadas)) {
 				Ronda ronda = Ronda.obtenerRondaConNumero(chequeoRonda, RondasRealizadas);
+				
 				for (Partido p : ronda.getPartidos()) {
+					System.out.println(p.toString());
 					
 					if (p.getEquipo1().getNombre().equals(chequeoEquipo1)
 							&& p.getEquipo2().getNombre().equals(chequeoEquipo2)) {
@@ -51,16 +52,27 @@ public class CreadorDeObjeto {
 					
 					}
 			
+					
+					System.out.println("chequeo de pronostico");
+			
+					System.out.println(nuevoPronostico.getEquipo().getNombre());
+					
+					System.out.println("fin chequeo");
+					
+					System.out.println("----------------------------");
+					
+					if (!apostadorSeleccionado.getPronostico().contains(nuevoPronostico)) {
+						apostadorSeleccionado.agregarPronosticos(nuevoPronostico);
+					}
+					
 				}
+				
 
 			}
 			
-			if (!pronosticos.contains(nuevoPronostico)) {
-				pronosticos.add(nuevoPronostico);
-			}
 
 		}
-
+	
 		return apostadoresCreados;
 
 	}

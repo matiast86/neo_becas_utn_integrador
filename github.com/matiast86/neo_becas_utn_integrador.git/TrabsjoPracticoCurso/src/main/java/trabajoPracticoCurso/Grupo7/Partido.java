@@ -80,6 +80,14 @@ public class Partido {
 	public void setGolesEquipo2(int golesEquipo2) {
 		this.golesEquipo2 = golesEquipo2;
 	}
+
+	@Override
+	public String toString() {
+		return "Partido [equipo1=" + equipo1 + ", equipo2=" + equipo2 + ", golesEquipo1=" + golesEquipo1
+				+ ", golesEquipo2=" + golesEquipo2 + "]";
+	}
+	
+	
 	
 	
 	

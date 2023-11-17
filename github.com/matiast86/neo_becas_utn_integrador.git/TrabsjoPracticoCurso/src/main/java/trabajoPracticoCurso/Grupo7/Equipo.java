@@ -41,5 +41,13 @@ public class Equipo {
 		Equipo other = (Equipo) obj;
 		return Objects.equals(nombre, other.nombre);
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Equipo [nombre=" + nombre + "]";
+	}
+	
 	
 }

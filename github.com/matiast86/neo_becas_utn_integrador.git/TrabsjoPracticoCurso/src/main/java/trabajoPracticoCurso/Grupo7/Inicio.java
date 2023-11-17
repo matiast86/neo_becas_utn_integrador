@@ -25,11 +25,11 @@ public class Inicio {
 			lectorArchivosPronostico.parsearArchivoPronosticos();
 			
 			
-			CreadorDeObjeto creadorObjetos = new CreadorDeObjeto(lectorArchivosPronostico.parsearArchivoPronosticos(),lectorArchivosResultado.parsearArchivoResultados());
+			CreadorDeObjetoCSV creadorObjetos = new CreadorDeObjetoCSV(lectorArchivosPronostico.parsearArchivoPronosticos(),lectorArchivosResultado.parsearArchivoResultados());
 			
 			ArrayList<Ronda> rondas = creadorObjetos.ListarRonda();
 			
-			
+			/*
 			for (Ronda r : rondas) {
 				
 				System.out.println("numero de ronda"  +  " " + r.getNro());
@@ -45,27 +45,44 @@ public class Inicio {
 					
 					
 				}
-				
-				
-				
+			*/
+			ArrayList<Apostador> apostadores= creadorObjetos.listarApostadores(rondas);
+			
+				for (Apostador apostador: apostadores) {
+					
+					System.out.println("nombre del apostador " + "" + apostador.getNombre());
+					
+					System.out.println("Pronosticos del apostador");
+					
+					System.out.println(apostador.getPronostico().size());
+					
+					for(Pronostico p : apostador.getPronostico()) {
+						
+						
+						
+						System.out.println("Partido del pronostico" +"  " + p.getPartido().toString());
+						System.out.println("Equipo del pronostico" + p.getEquipo().getNombre());
+						System.out.println("resultado del pronostico");
+						System.out.println(p.getResultado());
+						System.out.println("-----------------------------------");
+						
+						
+					}
+					
+					
+					
+				}
+			
+	
 				
 				
 			}
 			
 			
-	 
 
-			
-			//System.out.println(pronosticos.size());
-			
-			
-
-  
-		
 		}
 	
 	}
 	
 	
 	
-}
