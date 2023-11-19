@@ -1,4 +1,4 @@
-package trabajoPracticoCurso.Grupo7;
+package Datos;
 
 import com.opencsv.bean.CsvBindByPosition;
 

@@ -1,6 +1,4 @@
-package trabajoPracticoCurso.Grupo7;
-
-
+package Logica;
 
 public class Partido {
 
