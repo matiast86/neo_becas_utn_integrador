@@ -3,6 +3,7 @@ package Datos;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import ClaseErrores.DatoIngresadoNoEsperado;
 import ClaseErrores.DatoIngresadoVacioException;
 import Logica.Apostador;
@@ -26,7 +27,7 @@ public class CreadorDeObjetoCSV {
     }
 	
 	
-	public ArrayList<Apostador> listarApostadores(ArrayList<Ronda> RondasRealizadas) throws  DatoIngresadoNoEsperado {
+	public ArrayList<Apostador> listarApostadores(ArrayList<Ronda> RondasRealizadas) throws  DatoIngresadoNoEsperado, DatoIngresadoVacioException {
 		ArrayList<Apostador> apostadoresCreados = new ArrayList<Apostador>();
 
 		for (ArchivosPronosticos lineaArchivoPronostico : this.pronosticosList) {
@@ -44,18 +45,16 @@ public class CreadorDeObjetoCSV {
 				throw new DatoIngresadoVacioException();
 			}
 			
-			if(lineaArchivoPronostico.getGana1()== ' ') {
-				throw new DatoIngresadoVacioException();
-			} else if (lineaArchivoPronostico.getGana1() != 'X') {
-					throw new DatoIngresadoNoEsperado(lineaArchivoPronostico.getGana1());
-				}
+			if(!(lineaArchivoPronostico.getGana1() == '\0') && !(lineaArchivoPronostico.getGana1() == 'X')) {
+				throw new DatoIngresadoNoEsperado();
+			} 
 			
-			if(lineaArchivoPronostico.getGana2()== ' ') {
-				throw new DatoIngresadoVacioException();
-			} else if (lineaArchivoPronostico.getGana2() != 'X') {
-				throw new DatoIngresadoNoEsperado (lineaArchivoPronostico.getGana2());
-				}
-			
+			if(!(lineaArchivoPronostico.getGana2() == '\0') && !(lineaArchivoPronostico.getGana2() == 'X')) {
+				throw new DatoIngresadoNoEsperado();
+			} 
+			if(!(lineaArchivoPronostico.getEmpata() == '\0') && !(lineaArchivoPronostico.getEmpata() == 'X')) {
+				throw new DatoIngresadoNoEsperado();
+			} 
 			
 			
 			
@@ -115,10 +114,29 @@ public class CreadorDeObjetoCSV {
 
 
 
-	public ArrayList<Ronda> ListarRonda() {
+	public ArrayList<Ronda> ListarRonda() throws DatoIngresadoVacioException, DatoIngresadoNoEsperado {
 		ArrayList<Ronda> rondasCreadas = new ArrayList<Ronda>();
 		for (ArchivoResultados lineaArchivoResultado : this.resultadosList) {
 			Ronda RondaCaptada;
+			
+			
+			
+			if(lineaArchivoResultado.getEquipo1().equals("")) {
+				throw new DatoIngresadoVacioException();
+			}
+			if(lineaArchivoResultado.getEquipo2().equals("")) {
+				throw new DatoIngresadoVacioException();
+			}
+			
+			if(lineaArchivoResultado.getGoles1()< 0) {
+				throw new DatoIngresadoNoEsperado();
+			}
+			
+			if(lineaArchivoResultado.getGoles2() < 0) {
+				throw new DatoIngresadoNoEsperado();
+			}
+			
+			
 			if (!Ronda.estaEnLista(lineaArchivoResultado.getRonda(), rondasCreadas)) {
 				RondaCaptada = new Ronda(lineaArchivoResultado.getRonda());
 				rondasCreadas.add(RondaCaptada);
