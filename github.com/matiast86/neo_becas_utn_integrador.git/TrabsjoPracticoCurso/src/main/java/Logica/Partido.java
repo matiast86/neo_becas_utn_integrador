@@ -16,6 +16,8 @@ public class Partido {
 		this.golesEquipo2=golesE2;
 	}
 
+
+
 	public resultadoEnum resultado(Equipo equipo) {
 		if(!this.equipo1.equals(equipo)) {
 			if(!this.equipo2.equals(equipo)) {
