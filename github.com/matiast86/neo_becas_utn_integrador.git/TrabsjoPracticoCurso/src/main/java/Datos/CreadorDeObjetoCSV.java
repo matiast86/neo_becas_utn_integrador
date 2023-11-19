@@ -1,7 +1,16 @@
-package trabajoPracticoCurso.Grupo7;
+package Datos;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import ClaseErrores.DatoIngresadoNoEsperado;
+import ClaseErrores.DatoIngresadoVacioException;
+import Logica.Apostador;
+import Logica.Equipo;
+import Logica.Partido;
+import Logica.Pronostico;
+import Logica.Ronda;
+import Logica.resultadoEnum;
 
 public class CreadorDeObjetoCSV {
 
@@ -17,31 +26,66 @@ public class CreadorDeObjetoCSV {
     }
 	
 	
-	public ArrayList<Apostador> listarApostadores(ArrayList<Ronda> RondasRealizadas) {
+	public ArrayList<Apostador> listarApostadores(ArrayList<Ronda> RondasRealizadas) throws  DatoIngresadoNoEsperado {
 		ArrayList<Apostador> apostadoresCreados = new ArrayList<Apostador>();
 
 		for (ArchivosPronosticos lineaArchivoPronostico : this.pronosticosList) {
 			Apostador apostadorSeleccionado;
 			
-			if(!Apostador.ApostadorEstaEnLista(lineaArchivoPronostico.getApostador(),apostadoresCreados)) {
-				apostadorSeleccionado= new Apostador(lineaArchivoPronostico.getApostador());
-				apostadoresCreados.add(apostadorSeleccionado);
+			
+			if(lineaArchivoPronostico.getEquipo1().equals("")) {
+				throw new DatoIngresadoVacioException();
+			}
+			if(lineaArchivoPronostico.getEquipo2().equals("")) {
+				throw new DatoIngresadoVacioException();
 			}
 			
+			if (lineaArchivoPronostico.getRonda()==0) {
+				throw new DatoIngresadoVacioException();
+			}
+			
+			if(lineaArchivoPronostico.getGana1()== ' ') {
+				throw new DatoIngresadoVacioException();
+			} else if (lineaArchivoPronostico.getGana1() != 'X') {
+					throw new DatoIngresadoNoEsperado(lineaArchivoPronostico.getGana1());
+				}
+			
+			if(lineaArchivoPronostico.getGana2()== ' ') {
+				throw new DatoIngresadoVacioException();
+			} else if (lineaArchivoPronostico.getGana2() != 'X') {
+				throw new DatoIngresadoNoEsperado (lineaArchivoPronostico.getGana2());
+				}
+			
+			
+			
+			
+			
+			if(!Apostador.ApostadorEstaEnLista(lineaArchivoPronostico.getApostador(),apostadoresCreados) && !lineaArchivoPronostico.getApostador().equals("")) {
+				apostadorSeleccionado= new Apostador(lineaArchivoPronostico.getApostador());
+				apostadoresCreados.add(apostadorSeleccionado);
+			} /*else if(!lineaArchivoPronostico.getApostador().equals("")) {
+				throw new Exception ("El nombre del apostador no puede ser vacio");
+			} hay que preguntar al profe sobre el problema que lee una linea de mas 
+			*/	
 			apostadorSeleccionado= Apostador.obtenerApostador(lineaArchivoPronostico.getApostador(),apostadoresCreados);
 			int chequeoRonda = lineaArchivoPronostico.getRonda();
+			
 			String chequeoEquipo1 = lineaArchivoPronostico.getEquipo1();
+			
 			String chequeoEquipo2 = lineaArchivoPronostico.getEquipo2();
+			
 			Pronostico nuevoPronostico = null ;
+			
+			
+			
+			
 			
 			if(Ronda.estaEnLista(chequeoRonda, RondasRealizadas)) {
 				Ronda ronda = Ronda.obtenerRondaConNumero(chequeoRonda, RondasRealizadas);
 				
 				for (Partido p : ronda.getPartidos()) {
-					System.out.println(p.toString());
 					
-					if (p.getEquipo1().getNombre().equals(chequeoEquipo1)
-							&& p.getEquipo2().getNombre().equals(chequeoEquipo2)) {
+					if (p.getEquipo1().getNombre().equals(chequeoEquipo1) && p.getEquipo2().getNombre().equals(chequeoEquipo2)) {
 						if (lineaArchivoPronostico.getGana1() == 'X') {
 							nuevoPronostico = new Pronostico(p, p.getEquipo1(), resultadoEnum.Ganador);
 						} else if (lineaArchivoPronostico.getGana2() == 'X') {
@@ -51,28 +95,17 @@ public class CreadorDeObjetoCSV {
 						}
 					
 					}
-			
-					
-					System.out.println("chequeo de pronostico");
-			
-					System.out.println(nuevoPronostico.getEquipo().getNombre());
-					
-					System.out.println("fin chequeo");
-					
-					System.out.println("----------------------------");
-					
-					if (!apostadorSeleccionado.getPronostico().contains(nuevoPronostico)) {
-						apostadorSeleccionado.agregarPronosticos(nuevoPronostico);
-					}
 					
 				}
+					
+				if (!apostadorSeleccionado.getPronostico().contains(nuevoPronostico)) {
+						apostadorSeleccionado.agregarPronosticos(nuevoPronostico);
+				}
+					
+			}
 				
 
-			}
-			
-
 		}
-	
 		return apostadoresCreados;
 
 	}

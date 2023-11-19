@@ -1,4 +1,4 @@
-package trabajoPracticoCurso.Grupo7;
+package Datos;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;

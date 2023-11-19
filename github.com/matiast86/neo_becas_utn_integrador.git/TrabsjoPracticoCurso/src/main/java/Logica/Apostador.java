@@ -1,4 +1,4 @@
-package trabajoPracticoCurso.Grupo7;
+package Logica;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,21 +32,16 @@ public class Apostador {
 	
 	 
 	 
-	 public int obtenerPuntos(ArrayList<Partido> listaDePartidos) {
-		    int puntos = 0;
+	 public int obtenerPuntos() {
+		    int puntosObtenidos = 0;
 
 		    for (Pronostico pronostico : this.pronostico) {
-		        Partido partido = pronostico.getPartido();
-		        resultadoEnum resultadoPronostico = pronostico.getResultado();
-		        resultadoEnum resultadoReal = partido.resultado(null);
+		    	puntosObtenidos = puntosObtenidos + pronostico.puntos();
 
-		        // Compara el pronostico con resultados
-		        if (resultadoPronostico.equals(resultadoReal)) {
-		            puntos += 1;
-		        }
+		
 		    }
 
-		    return puntos;
+		    return puntosObtenidos;
 		}
 
 		

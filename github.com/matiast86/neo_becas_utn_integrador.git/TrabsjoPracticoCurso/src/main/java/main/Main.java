@@ -1,6 +1,6 @@
 package main;
 
-import trabajoPracticoCurso.Grupo7.LectorDeArchivos;
+import Datos.LectorDeArchivos;
 
 public class Main {
 	

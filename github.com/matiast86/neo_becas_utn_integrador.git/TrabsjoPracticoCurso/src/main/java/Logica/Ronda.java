@@ -1,4 +1,4 @@
-package trabajoPracticoCurso.Grupo7;
+package Logica;
 
 import java.util.ArrayList;
 

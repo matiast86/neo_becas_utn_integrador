@@ -7,8 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Logica.PronosticosDb;
 import dao.Impl.MysqlDaoImpl;
-import trabajoPracticoCurso.Grupo7.PronosticosDb;
 import dao.DAO;
 
 public class PronosticosController {
