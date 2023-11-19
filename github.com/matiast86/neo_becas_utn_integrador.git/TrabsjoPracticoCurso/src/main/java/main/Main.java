@@ -14,6 +14,8 @@ public class Main {
 		
 		LectorDeArchivos lectorPronostico = new LectorDeArchivos(args[0]);
 		lectorPronostico.parsearArchivoPronosticos();
+		
+		
 	}
 
 }

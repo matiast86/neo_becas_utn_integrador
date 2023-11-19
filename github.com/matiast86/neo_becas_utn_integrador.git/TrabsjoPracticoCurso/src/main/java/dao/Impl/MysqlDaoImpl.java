@@ -1,19 +1,20 @@
 package dao.Impl;
 
 import dao.AdministradorDeConexiones;
-
+import dao.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import trabajoPracticoCurso.Grupo7.PronosticosDb;
+import Datos.PronosticosDb;
+import Datos.ResultadosDb;
 
-public class MysqlDaoImpl {
+public class MysqlDaoImpl implements DAO {
 	
     
-    public ArrayList<PronosticosDb> findAllPartidos() throws Exception{
+    public ArrayList<PronosticosDb> findAllPronosticos() throws Exception{
         //vamos a ver la clase que viene JDBC
         Connection connection = AdministradorDeConexiones.getConnection();//f5
         
@@ -23,7 +24,7 @@ public class MysqlDaoImpl {
         
         ResultSet res =  pst.executeQuery();
         
-        ArrayList<PronosticosDb> listado  = new ArrayList<>();
+        ArrayList<PronosticosDb> listadoPronosticos  = new ArrayList<>();
         //extraer los datos del res!
         while(res.next()) {
             //aca uds hace la magia
@@ -37,10 +38,40 @@ public class MysqlDaoImpl {
             
             
             
-            listado.add(new PronosticosDb(apostador, ronda, equipo1, gana1, empata, gana2, equipo2));
+            listadoPronosticos.add(new PronosticosDb(apostador, ronda, equipo1, gana1, empata, gana2, equipo2));
         }
 
-        return listado;
+        return listadoPronosticos;
     }
+    
+    public ArrayList<ResultadosDb> findAllResultados() throws Exception{
+        //vamos a ver la clase que viene JDBC
+        Connection connection = AdministradorDeConexiones.getConnection();//f5
+        
+        
+        String sql = "select * from resultados";
+        PreparedStatement pst = connection.prepareStatement(sql);
+        
+        ResultSet res =  pst.executeQuery();
+        
+        ArrayList<ResultadosDb> listadoResultados  = new ArrayList<>();
+        //extraer los datos del res!
+        while(res.next()) {
+            //aca uds hace la magia
+            int ronda = res.getInt(1);
+            String equipo1 = res.getString(2);
+            int cantGoles1 = res.getInt(3);
+            int cantGoles2 = res.getInt(4);
+            String equipo2 = res.getString(5);
+            
+            
+            
+            listadoResultados.add(new ResultadosDb(ronda, equipo1, cantGoles1, cantGoles2, equipo2));
+        }
+
+        return listadoResultados;
+    }
+
+
 
 }
