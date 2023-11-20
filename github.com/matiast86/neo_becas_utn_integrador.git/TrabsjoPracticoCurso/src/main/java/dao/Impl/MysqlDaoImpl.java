@@ -45,7 +45,6 @@ public class MysqlDaoImpl implements DAO {
     }
     
     public ArrayList<ResultadosDb> findAllResultados() throws Exception{
-        //vamos a ver la clase que viene JDBC
         Connection connection = AdministradorDeConexiones.getConnection();//f5
         
         
@@ -55,9 +54,9 @@ public class MysqlDaoImpl implements DAO {
         ResultSet res =  pst.executeQuery();
         
         ArrayList<ResultadosDb> listadoResultados  = new ArrayList<>();
-        //extraer los datos del res!
+
         while(res.next()) {
-            //aca uds hace la magia
+
             int ronda = res.getInt(1);
             String equipo1 = res.getString(2);
             int cantGoles1 = res.getInt(3);

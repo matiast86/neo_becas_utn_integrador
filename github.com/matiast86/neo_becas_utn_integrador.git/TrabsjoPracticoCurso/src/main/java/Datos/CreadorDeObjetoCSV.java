@@ -32,7 +32,7 @@ public class CreadorDeObjetoCSV {
 
 		for (ArchivosPronosticos lineaArchivoPronostico : this.pronosticosList) {
 			Apostador apostadorSeleccionado;
-			
+			// chequeos en las entradas del archivo
 			
 			if(lineaArchivoPronostico.getEquipo1().equals("")) {
 				throw new DatoIngresadoVacioException();
@@ -119,7 +119,7 @@ public class CreadorDeObjetoCSV {
 		for (ArchivoResultados lineaArchivoResultado : this.resultadosList) {
 			Ronda RondaCaptada;
 			
-			
+			//chequeos en la entradas del archivo
 			
 			if(lineaArchivoResultado.getEquipo1().equals("")) {
 				throw new DatoIngresadoVacioException();

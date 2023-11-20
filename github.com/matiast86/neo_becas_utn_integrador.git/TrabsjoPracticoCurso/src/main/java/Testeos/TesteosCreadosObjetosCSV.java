@@ -73,11 +73,10 @@ public class TesteosCreadosObjetosCSV {
 				rondas = creadorObjetos.ListarRonda();
 			} catch (DatoIngresadoNoEsperado e) {
 				System.out.println("Los datos ingresados en la parte de gol no puede ser negativos");
-				e.printStackTrace();
 			}
 		} catch (DatoIngresadoVacioException e) {
 			System.out.println("Los datos no pueden estar vacios");
-			e.printStackTrace();
+
 		}
 		
 		ArrayList<Apostador> apostadores = null;
