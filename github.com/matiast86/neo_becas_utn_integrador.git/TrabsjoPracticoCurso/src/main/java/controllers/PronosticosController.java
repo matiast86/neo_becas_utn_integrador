@@ -5,16 +5,15 @@ import java.util.ArrayList;
 import Datos.PronosticosDb;
 import Logica.Apostador;
 import Logica.Equipo;
-import Logica.Partido;
+import Logica.PartidoPronosticado;
 import Logica.Pronostico;
-import Logica.Ronda;
 import Logica.resultadoEnum;
 import dao.DAO;
 import dao.Impl.MysqlDaoImpl;
 
 public class PronosticosController {
 
-    public ArrayList<Pronostico> obtenerPronosticos(ArrayList<Ronda> rondasCreadas) {
+    public ArrayList<Pronostico> obtenerPronosticos() {
         DAO dao = new MysqlDaoImpl();
         ArrayList<Pronostico> pronosticos = new ArrayList<>();
 
@@ -28,7 +27,7 @@ public class PronosticosController {
 
                 Equipo equipo1 = new Equipo(item.getEquipo1());
                 Equipo equipo2 = new Equipo(item.getEquipo2());
-                Partido partido = new Partido(equipo1, equipo2, 0, 0); 
+                PartidoPronosticado partido = new PartidoPronosticado(equipo1, equipo2); 
 
 
                 resultadoEnum guessedResult = null;

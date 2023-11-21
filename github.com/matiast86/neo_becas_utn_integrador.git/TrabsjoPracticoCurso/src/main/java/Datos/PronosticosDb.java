@@ -20,6 +20,14 @@ public class PronosticosDb {
 		this.gana2 = gana2;
 		this.equipo2 = equipo2;
 	}
+	
+
+
+	public PronosticosDb() {
+		// TODO Auto-generated constructor stub
+	}
+
+
 
 	public String getApostador() {
 		return apostador;
