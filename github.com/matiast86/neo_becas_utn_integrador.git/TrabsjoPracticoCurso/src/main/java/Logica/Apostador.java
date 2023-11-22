@@ -1,7 +1,7 @@
 package Logica;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Apostador {
 
@@ -28,24 +28,39 @@ public class Apostador {
 	 }
 
 	
-	
-	
-	 
-	 
-	 public int obtenerPuntos() {
-		    int puntosObtenidos = 0;
-
-		    for (Pronostico pronostico : this.pronostico) {
-		    	puntosObtenidos = puntosObtenidos + pronostico.puntos();
-
+	public static boolean ApostadorEstaEnLista(String apostador, ArrayList<Apostador> apostadoresCreados) {
+			for(Apostador a : apostadoresCreados) {
+				if(a.getNombre().equals(apostador)) {
+					return true;
+				}
+			}
+		return false;
+	}
 		
-		    }
-
-		    return puntosObtenidos;
+	public static Apostador obtenerApostador(String apostador, ArrayList<Apostador> apostadoresCreados) {
+		for(Apostador a : apostadoresCreados) {
+			if(a.getNombre().equals(apostador)) {
+					return a;
+			}
 		}
-
+			return null;
+	}
 		
 		
+	public ArrayList<Pronostico> obtenerPronosticosPorRonda (int numeroRonda){
+		ArrayList<Pronostico> listaPronosticos= new ArrayList<Pronostico>();
+			
+			
+		for(Pronostico p : this.pronostico) {
+				
+			if(p.getNumeroRonda()==numeroRonda) {
+				listaPronosticos.add(p);
+			}
+				
+		}
+			
+		return listaPronosticos;
+	 }
 	
 
 	//getters y setters
@@ -70,22 +85,6 @@ public class Apostador {
 		this.puntos = puntos;
 	}
 	
-	public static boolean ApostadorEstaEnLista(String apostador, ArrayList<Apostador> apostadoresCreados) {
-		for(Apostador a : apostadoresCreados) {
-			if(a.getNombre().equals(apostador)) {
-				return true;
-			}
-		}
-		return false;
-	}
-	
-	public static Apostador obtenerApostador(String apostador, ArrayList<Apostador> apostadoresCreados) {
-		for(Apostador a : apostadoresCreados) {
-			if(a.getNombre().equals(apostador)) {
-				return a;
-			}
-		}
-		return null;
-	}
+
 	
 }

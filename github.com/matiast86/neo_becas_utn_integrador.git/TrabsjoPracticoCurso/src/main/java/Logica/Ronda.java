@@ -47,7 +47,10 @@
 			}
 			return false;
 		}
-	
+		
+		public int obtenerCantidadPartido() {
+			return this.partidos.size();
+		}
 		
 		
 		

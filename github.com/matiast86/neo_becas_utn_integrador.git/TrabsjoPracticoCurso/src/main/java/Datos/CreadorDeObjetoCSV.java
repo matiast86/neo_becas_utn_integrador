@@ -59,7 +59,7 @@ public class CreadorDeObjetoCSV {
 			
 			
 			
-			if(!Apostador.ApostadorEstaEnLista(lineaArchivoPronostico.getApostador(),apostadoresCreados) && !lineaArchivoPronostico.getApostador().equals("")) {
+			if(!Apostador.ApostadorEstaEnLista(lineaArchivoPronostico.getApostador(),apostadoresCreados)) {
 				apostadorSeleccionado= new Apostador(lineaArchivoPronostico.getApostador());
 				apostadoresCreados.add(apostadorSeleccionado);
 			} /*else if(!lineaArchivoPronostico.getApostador().equals("")) {
@@ -86,11 +86,11 @@ public class CreadorDeObjetoCSV {
 					
 					if (p.getEquipo1().getNombre().equals(chequeoEquipo1) && p.getEquipo2().getNombre().equals(chequeoEquipo2)) {
 						if (lineaArchivoPronostico.getGana1() == 'X') {
-							nuevoPronostico = new Pronostico(p, p.getEquipo1(), resultadoEnum.Ganador);
+							nuevoPronostico = new Pronostico(chequeoRonda,p, p.getEquipo1(), resultadoEnum.Ganador);
 						} else if (lineaArchivoPronostico.getGana2() == 'X') {
-							nuevoPronostico = new Pronostico(p, p.getEquipo2(), resultadoEnum.Ganador);
+							nuevoPronostico = new Pronostico(chequeoRonda,p, p.getEquipo2(), resultadoEnum.Ganador);
 						} else {
-							nuevoPronostico = new Pronostico(p, p.getEquipo1(), resultadoEnum.Empato);
+							nuevoPronostico = new Pronostico(chequeoRonda,p, p.getEquipo1(), resultadoEnum.Empato);
 						}
 					
 					}
@@ -120,6 +120,13 @@ public class CreadorDeObjetoCSV {
 			Ronda RondaCaptada;
 			
 			//chequeos en la entradas del archivo
+			
+			
+			if(lineaArchivoResultado.getRonda()==0) {
+				throw new DatoIngresadoVacioException();
+			}
+			
+			
 			
 			if(lineaArchivoResultado.getEquipo1().equals("")) {
 				throw new DatoIngresadoVacioException();

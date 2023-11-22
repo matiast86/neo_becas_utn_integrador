@@ -65,7 +65,7 @@ public class PronosticosController {
 
         return pronosticos;
     }
-    
+  /*  
 	public ArrayList<Apostador> listarApostadores(ArrayList<Ronda> RondasRealizadas) throws  DatoIngresadoNoEsperado, DatoIngresadoVacioException {
 		ArrayList<Apostador> apostadoresCreados = new ArrayList<Apostador>();
 
@@ -94,7 +94,7 @@ public class PronosticosController {
 			} /*else if(!lineaArchivoPronostico.getApostador().equals("")) {
 				throw new Exception ("El nombre del apostador no puede ser vacio");
 			} hay que preguntar al profe sobre el problema que lee una linea de mas 
-			*/	
+				
 			apostadorSeleccionado= Apostador.obtenerApostador(lineaArchivoPronostico.getApostador(),apostadoresCreados);
 			int chequeoRonda = lineaArchivoPronostico.getRonda();
 			
@@ -133,11 +133,11 @@ public class PronosticosController {
 			}
 				
 
-		})
+		
 		return apostadoresCreados;
 
 	}
-
+*/
     
 
 }

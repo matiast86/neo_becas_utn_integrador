@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import ClaseErrores.DatoIngresadoNoEsperado;
 import ClaseErrores.DatoIngresadoVacioException;
+import Datos.CalculadorDePuntos;
 import Datos.CreadorDeObjetoCSV;
 import Datos.LectorDeArchivos;
 
@@ -58,14 +59,17 @@ public class Inicio {
 			}
 			
 
-			for (Apostador a : apostadores) {
-					
-				System.out.println("puntos de " +  a.getNombre() + "= "  + a.obtenerPuntos());
-
-			}
+			
+			CalculadorDePuntos calculadora = new CalculadorDePuntos(1,0);
+			
+			
+			calculadora.calcularPuntosDeApostadores(apostadores, rondas);
 						
 
+			for (Apostador a: apostadores) {
 				
+				System.out.println("los puntos de " + a.getNombre() + " son "  + a.getPuntos());
+			}	
 				
 					
 					
