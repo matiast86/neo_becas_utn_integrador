@@ -5,7 +5,11 @@ public class Pronostico {
 	private int numeroRonda;
 	private Partido partido;
 	private Equipo equipo;
+<<<<<<< HEAD
 	private resultadoEnum resultado;
+=======
+	private resultadoEnum resultado;	
+>>>>>>> a96c16b8b9492045e5f1a151716cf4ecf5ba535a
 	
 	public Pronostico (int ronda,Partido partido, Equipo equipo, resultadoEnum resultado) {
 		this.numeroRonda=ronda;
@@ -14,6 +18,7 @@ public class Pronostico {
 		this.resultado=resultado;
 	}
 	
+<<<<<<< HEAD
 	
 	
 	public Pronostico(Partido partido, Equipo equipo, resultadoEnum resultado) {
@@ -31,6 +36,10 @@ public class Pronostico {
 
 
 
+=======
+		
+	
+>>>>>>> a96c16b8b9492045e5f1a151716cf4ecf5ba535a
 	public Partido getPartido() {
 		return this.partido;
 	}
@@ -49,7 +58,10 @@ public class Pronostico {
 		return resultado;
 	}
 	
+<<<<<<< HEAD
 
+=======
+>>>>>>> a96c16b8b9492045e5f1a151716cf4ecf5ba535a
 
 	public int getNumeroRonda() {
 		return numeroRonda;
