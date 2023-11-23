@@ -5,9 +5,7 @@ public class Pronostico {
 	private int numeroRonda;
 	private Partido partido;
 	private Equipo equipo;
-	private resultadoEnum resultado;
-	private PartidoPronosticado partidoPronosticado;
-	
+	private resultadoEnum resultado;	
 	
 	public Pronostico (int ronda,Partido partido, Equipo equipo, resultadoEnum resultado) {
 		this.numeroRonda=ronda;
@@ -16,13 +14,6 @@ public class Pronostico {
 		this.resultado=resultado;
 	}
 	
-	public Pronostico (PartidoPronosticado partidoPronosticado, Equipo equipo, resultadoEnum resultado) {
-		this.partidoPronosticado = partidoPronosticado;
-		this.equipo=equipo;
-		this.resultado=resultado;
-	}
-
-
 		
 	
 	public Partido getPartido() {
@@ -43,9 +34,6 @@ public class Pronostico {
 		return resultado;
 	}
 	
-	public PartidoPronosticado getPArtidoPrnosticado() {
-		return partidoPronosticado;
-	}
 
 	public int getNumeroRonda() {
 		return numeroRonda;

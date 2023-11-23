@@ -12,6 +12,11 @@ import dao.Impl.MysqlDaoImpl;
 public class ResultadosController {
 
 
+		public ResultadosController() {
+			
+			
+		}
+	
         public ArrayList<Ronda> procesarResultados() {
         	DAO dao = new MysqlDaoImpl();
             ArrayList<Ronda> rondas = new ArrayList<>();
@@ -40,7 +45,7 @@ public class ResultadosController {
                 for (Ronda ronda : rondas) {
                     System.out.println("Ronda " + ronda.getNro() + ":");
                     for (Partido partido : ronda.getPartidos()) {
-                        System.out.println(partido.toString() + " - Resultado: " + partido.resultado(null) + partido.resultado(null));
+                        System.out.println(partido.toString());
                     }
                 }
 

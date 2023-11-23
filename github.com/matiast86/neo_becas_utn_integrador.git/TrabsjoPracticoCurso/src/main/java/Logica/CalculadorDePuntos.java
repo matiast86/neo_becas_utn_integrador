@@ -1,10 +1,6 @@
-package Datos;
+package Logica;
 
 import java.util.ArrayList;
-
-import Logica.Apostador;
-import Logica.Pronostico;
-import Logica.Ronda;
 
 public class CalculadorDePuntos {
 

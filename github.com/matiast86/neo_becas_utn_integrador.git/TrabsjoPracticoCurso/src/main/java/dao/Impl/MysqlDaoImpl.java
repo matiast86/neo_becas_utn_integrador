@@ -15,7 +15,7 @@ public class MysqlDaoImpl implements DAO {
 	
     
     public ArrayList<PronosticosDb> findAllPronosticos() throws Exception{
-        //vamos a ver la clase que viene JDBC
+
         Connection connection = AdministradorDeConexiones.getConnection();//f5
         
         
@@ -25,9 +25,9 @@ public class MysqlDaoImpl implements DAO {
         ResultSet res =  pst.executeQuery();
         
         ArrayList<PronosticosDb> listadoPronosticos  = new ArrayList<>();
-        //extraer los datos del res!
+
         while(res.next()) {
-            //aca uds hace la magia
+
             String apostador = res.getString(1);
             int ronda = res.getInt(2);
             String equipo1 = res.getString(3);
@@ -40,7 +40,7 @@ public class MysqlDaoImpl implements DAO {
             
             listadoPronosticos.add(new PronosticosDb(apostador, ronda, equipo1, gana1, empata, gana2, equipo2));
         }
-
+        connection.close();
         return listadoPronosticos;
     }
     
@@ -67,7 +67,8 @@ public class MysqlDaoImpl implements DAO {
             
             listadoResultados.add(new ResultadosDb(ronda, equipo1, cantGoles1, cantGoles2, equipo2));
         }
-
+        
+        connection.close();
         return listadoResultados;
     }
 
