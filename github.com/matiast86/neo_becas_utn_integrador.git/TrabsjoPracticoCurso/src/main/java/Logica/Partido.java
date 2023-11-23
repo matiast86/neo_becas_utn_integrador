@@ -15,8 +15,12 @@ public class Partido {
 		this.golesEquipo1=golesE1;
 		this.golesEquipo2=golesE2;
 	}
+	
 
 
+	public Partido(Equipo equipo12, Equipo equipo22) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public resultadoEnum resultado(Equipo equipo) {
 		if(!this.equipo1.equals(equipo)) {

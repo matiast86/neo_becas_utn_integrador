@@ -9,7 +9,6 @@ import Datos.PronosticosDb;
 import Logica.Apostador;
 import Logica.Equipo;
 import Logica.Partido;
-import Logica.PartidoPronosticado;
 import Logica.Pronostico;
 import Logica.Ronda;
 import Logica.resultadoEnum;
@@ -32,7 +31,7 @@ public class PronosticosController {
 
                 Equipo equipo1 = new Equipo(item.getEquipo1());
                 Equipo equipo2 = new Equipo(item.getEquipo2());
-                PartidoPronosticado partido = new PartidoPronosticado(equipo1, equipo2); 
+                Partido partido = new Partido(equipo1, equipo2); 
 
 
                 resultadoEnum guessedResult = null;
@@ -45,7 +44,7 @@ public class PronosticosController {
                 }
 
 
-                Pronostico pronostico = new Pronostico(partido, equipo1, guessedResult);
+                Pronostico pronostico = new Pronostico(partido, equipo2, guessedResult);
 
 
                 apostador.agregarPronosticos(pronostico);
@@ -63,7 +62,7 @@ public class PronosticosController {
             System.out.println("Error: " + e.getMessage());
         }
 
-        return pronosticos;
+        return pronosticos
     }
   /*  
 	public ArrayList<Apostador> listarApostadores(ArrayList<Ronda> RondasRealizadas) throws  DatoIngresadoNoEsperado, DatoIngresadoVacioException {
