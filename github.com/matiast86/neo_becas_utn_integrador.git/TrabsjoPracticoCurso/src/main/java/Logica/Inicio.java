@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import ClaseErrores.DatoIngresadoNoEsperado;
 import ClaseErrores.DatoIngresadoVacioException;
 import Datos.CreadorDeObjetoCSV;
+import Datos.CreadorDeObjetoDb;
 import Datos.LectorDeArchivos;
-import controllers.ResultadosController;
 import dao.DAO;
 import dao.Impl.MysqlDaoImpl;
 
@@ -80,7 +80,7 @@ public class Inicio {
 		
 		
 		
-		ResultadosController RBDD= new ResultadosController();
+		CreadorDeObjetoDb RBDD= new CreadorDeObjetoDb();
 		
 		ArrayList<Ronda> rondas = RBDD.procesarResultados();
 		

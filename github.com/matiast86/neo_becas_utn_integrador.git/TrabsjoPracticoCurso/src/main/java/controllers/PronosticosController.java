@@ -17,7 +17,7 @@ import dao.Impl.MysqlDaoImpl;
 
 public class PronosticosController {
 
-    public ArrayList<Pronostico> obtenerPronosticos() {
+    public ArrayList<Pronostico> obtenerPronosticos(ArrayList<Ronda> rondasRealizadas) {
         DAO dao = new MysqlDaoImpl();
         ArrayList<Pronostico> pronosticos = new ArrayList<>();
 
@@ -34,11 +34,13 @@ public class PronosticosController {
                 Partido partido = new Partido(equipo1, equipo2); 
 
 
+                Pronostico pronostico = null;
+                
                 resultadoEnum guessedResult = null;
-                if ("gana1".equalsIgnoreCase(item.getGana1())) {
+                if (item.getGana1().equals("X")) {
+                    pronostico = new Pronostico();
+                } else if (item.getGana2().equals("X")) {
                     guessedResult = resultadoEnum.Ganador;
-                } else if ("empata".equalsIgnoreCase(item.getEmpata())) {
-                    guessedResult = resultadoEnum.Empato;
                 } else if ("gana2".equalsIgnoreCase(item.getGana2())) {
                     guessedResult = resultadoEnum.Perdedor;
                 }
@@ -62,7 +64,7 @@ public class PronosticosController {
             System.out.println("Error: " + e.getMessage());
         }
 
-        return pronosticos
+        return pronosticos;
     }
   /*  
 	public ArrayList<Apostador> listarApostadores(ArrayList<Ronda> RondasRealizadas) throws  DatoIngresadoNoEsperado, DatoIngresadoVacioException {

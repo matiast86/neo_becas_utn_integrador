@@ -1,5 +1,7 @@
 package Datos;
 
+import Logica.resultadoEnum;
+
 public class PronosticosDb {
 	
 	private String apostador;
@@ -21,6 +23,11 @@ public class PronosticosDb {
 		this.equipo2 = equipo2;
 	}
 	
+
+	
+
+
+
 
 
 	public PronosticosDb() {
@@ -84,9 +91,11 @@ public class PronosticosDb {
 	public void setEquipo2(String equipo2) {
 		this.equipo2 = equipo2;
 	}
+		
 	
-	
-    @Override
+
+
+	@Override
     public String toString() {
         return "Apostador: " + apostador +
                ", Ronda: " + ronda +

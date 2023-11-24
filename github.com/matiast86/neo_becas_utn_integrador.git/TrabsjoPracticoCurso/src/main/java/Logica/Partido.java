@@ -18,7 +18,10 @@ public class Partido {
 	
 
 
-	public Partido(Equipo equipo12, Equipo equipo22) {
+	public Partido(Equipo equipo1, Equipo equipo2) {
+		this.equipo1 = equipo1;
+		this.equipo2 = equipo2;
+		
 		// TODO Auto-generated constructor stub
 	}
 
