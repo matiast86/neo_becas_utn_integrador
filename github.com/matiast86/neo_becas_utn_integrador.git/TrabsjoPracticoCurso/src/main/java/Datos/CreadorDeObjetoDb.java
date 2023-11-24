@@ -68,14 +68,14 @@ public class CreadorDeObjetoDb {
 				for (PronosticosDb item : pronosticosProcesados) {
 					
 					//Chequear ingreso de datos
-					if(!(item.getGana1().equals("")) && !(item.getGana1().equals("X"))) {
+					if(item.getGana1() != null && !item.getGana1().equals("X")) {
 						throw new DatoIngresadoNoEsperado();
 					} 
 					
-					if(!(item.getGana2().equals("")) && !(item.getGana2().equals("X"))) {
+					if(item.getGana2() != null && !item.getGana2().equals("X")) {
 						throw new DatoIngresadoNoEsperado();
 					} 
-					if(!(item.getEmpata().equals("")) && !(item.getEmpata().equals("X"))) {
+					if(item.getEmpata() != null && !item.getEmpata().equals("X")) {
 						throw new DatoIngresadoNoEsperado();
 					}
 					Apostador apostador = Apostador.obtenerApostador(item.getApostador(),apostadoresCreados);
@@ -97,9 +97,9 @@ public class CreadorDeObjetoDb {
 						for (Partido p : ronda.getPartidos()) {
 							
 							if (p.getEquipo1().getNombre().equals(chequeoEquipo1) && p.getEquipo2().getNombre().equals(chequeoEquipo2)) {
-								if (item.getGana1().equals("X")) {
+								if (item.getGana1() != null) {
 									nuevoPronostico = new Pronostico(chequeoRondas,p, p.getEquipo1(), resultadoEnum.Ganador);
-								} else if (item.getGana1().equals("X")) {
+								} else if (item.getGana2() != null) {
 									nuevoPronostico = new Pronostico(chequeoRondas,p, p.getEquipo2(), resultadoEnum.Ganador);
 								} else {
 									nuevoPronostico = new Pronostico(chequeoRondas,p, p.getEquipo1(), resultadoEnum.Empato);

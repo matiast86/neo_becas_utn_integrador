@@ -85,6 +85,24 @@ public class Apostador {
 		this.puntos = puntos;
 	}
 	
+	@Override
+	public String toString() {
+	    StringBuilder stringBuilder = new StringBuilder();
+	    stringBuilder.append("Apostador{");
+	    stringBuilder.append(System.lineSeparator());
+	    stringBuilder.append("nombre='").append(nombre).append('\'');
+	    stringBuilder.append(System.lineSeparator());
+	    stringBuilder.append(", pronostico=").append(pronostico);
+	    stringBuilder.append(System.lineSeparator());
+	    stringBuilder.append(", puntos=").append(puntos);
+	    stringBuilder.append(System.lineSeparator());
+	    stringBuilder.append('}');
+	    stringBuilder.append(System.lineSeparator()); // Agrega un salto de línea después de cada apostador
+	    return stringBuilder.toString();
+	}
+	
+
+	
 
 	
 }

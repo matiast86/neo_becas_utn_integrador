@@ -84,7 +84,9 @@ public class Inicio {
 		
 		ArrayList<Ronda> rondas = RBDD.procesarResultados();
 		
+		ArrayList<Apostador> apostadores = RBDD.obtenerApostadores(rondas);
 		
+		System.out.println(apostadores);
 		
 		
 		
