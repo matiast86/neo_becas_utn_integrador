@@ -80,13 +80,22 @@ public class Inicio {
 		
 		
 		
-		CreadorDeObjetoDb RBDD= new CreadorDeObjetoDb();
-		
-		ArrayList<Ronda> rondas = RBDD.procesarResultados();
-		
-		ArrayList<Apostador> apostadores = RBDD.obtenerApostadores(rondas);
-		
-		System.out.println(apostadores);
+        CreadorDeObjetoDb RBDD = new CreadorDeObjetoDb();
+
+        
+        ArrayList<Ronda> rondas = RBDD.procesarResultados();
+        ArrayList<Apostador> apostadores = RBDD.obtenerApostadores(rondas);
+
+        
+        CalculadorDePuntos calculadora = new CalculadorDePuntos(1, 1);
+
+        
+        calculadora.calcularPuntosDeApostadores(apostadores, rondas);
+
+        
+        for (Apostador apostador : apostadores) {
+            System.out.println(apostador);
+        }
 		
 		
 		

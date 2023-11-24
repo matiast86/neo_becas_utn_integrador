@@ -8,7 +8,6 @@ import Logica.Apostador;
 import Logica.Partido;
 import Logica.Pronostico;
 import Logica.Ronda;
-import controllers.PronosticosController;
 
 public class Main {
 	
