@@ -2,17 +2,30 @@ package Logica;
 
 import java.util.ArrayList;
 
+import ClaseErrores.DatoIngresadoNoEsperado;
+
 public class CalculadorDePuntos {
 
 		private int puntosAlGanar;
 		private int puntosAlPerder;
+		private int multiplicadorPorRonda;
+		private int multiplicadorPorFase;
 	
 	
 		
 		
-	public 	CalculadorDePuntos (int valorGanar, int valorPerder) {
+	public 	CalculadorDePuntos (int valorGanar, int valorPerder) throws DatoIngresadoNoEsperado {
+		if(valorGanar<0 || valorPerder <0) {
+			throw new DatoIngresadoNoEsperado();
+		}
+	
+		
+		
+		
 		this.puntosAlGanar=valorGanar;
 		this.puntosAlPerder=valorPerder;
+		this.multiplicadorPorRonda=2;
+		this.multiplicadorPorFase=5;
 	}
 		
 		
@@ -32,12 +45,14 @@ public class CalculadorDePuntos {
 				if(calcularMaximoPuntajeDeRonda(rondaSeleccionada) == puntosObtenidosEnRonda ) {
 					rondasAcertadasCompletas++;
 				}
-				puntosApostador = puntosApostador + puntosObtenidosEnRonda;
 				
+				puntosApostador = puntosApostador + puntosObtenidosEnRonda;
+
 			}
-			
+
 			if (rondasAcertadasCompletas == rondas.size()) {
-				puntosApostador = puntosApostador + (this.puntosAlGanar*10);
+				puntosApostador = puntosApostador + (this.puntosAlGanar*multiplicadorPorFase);
+				
 			}
 			
 			apostadorElegido.setPuntos(puntosApostador);
@@ -57,12 +72,12 @@ public class CalculadorDePuntos {
 				puntosApostador = puntosApostador + this.puntosAlGanar;
 				pronosticosAcertados ++;
 			} else {
-				puntosApostador = puntosApostador + this.puntosAlPerder;
+				puntosApostador = puntosApostador - this.puntosAlPerder;
 			}            
 		}
 		
 		if(pronosticosAcertados == ronda.obtenerCantidadPartido()) {
-			puntosApostador = puntosApostador + (this.puntosAlGanar*5);
+			puntosApostador = puntosApostador + (this.puntosAlGanar*multiplicadorPorRonda);
 		}
 		
 		
@@ -71,7 +86,7 @@ public class CalculadorDePuntos {
 	
 	
 	private int calcularMaximoPuntajeDeRonda(Ronda ronda) {
-		return (ronda.obtenerCantidadPartido()*this.puntosAlGanar) + (this.puntosAlGanar*5);
+		return (ronda.obtenerCantidadPartido()*this.puntosAlGanar) + (this.puntosAlGanar*multiplicadorPorRonda);
 	}
 
 	

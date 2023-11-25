@@ -15,7 +15,7 @@ import dao.Impl.MysqlDaoImpl;
 public class Inicio {
 
 	public static void main(String[] args) {
-		//src\main\archivos\pronosticos.csv
+
 		/*
 		if(args.length==0) {
 			System.out.println("ERROR: No ingrestaste ningun archivo como argumento!");
@@ -84,18 +84,41 @@ public class Inicio {
 
         
         ArrayList<Ronda> rondas = RBDD.procesarResultados();
-        ArrayList<Apostador> apostadores = RBDD.obtenerApostadores(rondas);
+        ArrayList<Apostador> apostadores = null;
+	
+			try {
+				apostadores = RBDD.obtenerApostadores(rondas);
+			} catch (DatoIngresadoNoEsperado e1) {
+				System.out.println("En gana1, empata o gana 2 dentro de pronostico, no se puede ingresar un valor distinto de 'X' ");
+				
+			}
+
+			
+			try {
+				CalculadorDePuntos calculadora = new CalculadorDePuntos(1, 0);
+				calculadora.calcularPuntosDeApostadores(apostadores, rondas);
+				
+		        for (Apostador apostador : apostadores) {
+		            System.out.println("Apostador= " + apostador.getNombre() + " puntos =" + apostador.getPuntos());
+		        }
+			} catch (DatoIngresadoNoEsperado e) {
+				System.out.println("No se pueden ingresar puntos negativos");
+			}
+			
+			
+			
+			
+	
 
         
-        CalculadorDePuntos calculadora = new CalculadorDePuntos(1, 1);
+       
+
 
         
-        calculadora.calcularPuntosDeApostadores(apostadores, rondas);
+        
 
         
-        for (Apostador apostador : apostadores) {
-            System.out.println(apostador);
-        }
+
 		
 		
 		

@@ -58,7 +58,7 @@ public class CreadorDeObjetoDb {
         return rondas;
 	}
 	
-        public ArrayList<Apostador> obtenerApostadores(ArrayList<Ronda> rondasRealizadas) {
+        public ArrayList<Apostador> obtenerApostadores(ArrayList<Ronda> rondasRealizadas) throws DatoIngresadoNoEsperado {
         	
         	ArrayList<Apostador> apostadoresCreados = new ArrayList<Apostador>();
         	
