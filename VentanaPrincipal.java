@@ -58,6 +58,7 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+		setTitle("Calculador de apuestas - Equipo 7");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 833, 494);
 		contentPane = new JPanel();
@@ -77,23 +78,24 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(lblEquipo);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Usuario\\Desktop\\s.png"));
-		lblNewLabel.setBounds(291, 53, 263, 65);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Usuario\\eclipse-workspace\\tp\\neo_becas_utn_integrador\\github.com\\matiast86\\neo_becas_utn_integrador.git\\TrabsjoPracticoCurso\\src\\main\\archivos\\img-neo.JPG"));
+		lblNewLabel.setBounds(306, 52, 239, 65);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnSentenciaSql = new JButton("Clickea aquí");
+		JButton btnSentenciaSql = new JButton("Leer datos por CSV");
 		btnSentenciaSql.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent eventoira2) {
-				ventana2 frame2 = new ventana2();
+				ventana1 frame2 = new ventana1();
 				frame2.setVisible(true);
 				dispose();
 			}
 		});
 		btnSentenciaSql.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnSentenciaSql.setBounds(563, 318, 131, 47);
+		btnSentenciaSql.setBounds(539, 298, 196, 47);
 		contentPane.add(btnSentenciaSql);
 		
-		btnClickHere = new JButton("Clickea aquí");
+		btnClickHere = new JButton("Leer datos por SQL");
+		btnClickHere.setToolTipText("asd");
 		btnClickHere.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnClickHere.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent eventoira1) {
@@ -102,20 +104,8 @@ public class VentanaPrincipal extends JFrame {
 				dispose();
 			}
 		});
-		btnClickHere.setBounds(137, 318, 131, 47);
+		btnClickHere.setBounds(130, 298, 189, 47);
 		contentPane.add(btnClickHere);
-		
-		JLabel lblNewLabel_1 = new JLabel("¿Ingresar con datos de manera manual?");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setBounds(61, 241, 303, 37);
-		contentPane.add(lblNewLabel_1);
-		
-		JLabel lblNewLabel_1_1 = new JLabel("¿Ingresar con datos ya cargados?");
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel_1_1.setBounds(489, 238, 303, 42);
-		contentPane.add(lblNewLabel_1_1);
 		
 		JSeparator separator = new JSeparator();
 		separator.setForeground(new Color(75, 0, 130));
