@@ -1,6 +1,7 @@
 package Logica;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
 public class Apostador {
@@ -61,6 +62,15 @@ public class Apostador {
 			
 		return listaPronosticos;
 	 }
+	
+	public static void ordenarApostadores(ArrayList<Apostador> apostadores) {
+	    // Define un Comparator para ordenar por puntos en orden descendente
+	    Comparator<Apostador> comparadorPorPuntos = Comparator.comparingInt(Apostador::getPuntos).reversed();
+
+	    // Utiliza el método sort de la lista para ordenar utilizando el Comparator
+	    apostadores.sort(comparadorPorPuntos);
+	}
+
 	
 
 	//getters y setters

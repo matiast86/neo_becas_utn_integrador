@@ -266,7 +266,7 @@ public class ventana1 extends JFrame {
 		btnGenerar = new JButton("Calcular puntos");
 		
 		btnGenerar.addActionListener(new ActionListener() {
-
+			
 
 			public void actionPerformed(ActionEvent eventoCalcularPuntos) {
 				
@@ -276,11 +276,43 @@ public class ventana1 extends JFrame {
 				
 				apostadores = Logica.IniciarLogica(arrayArgs,lectura,puntosGanar,puntosPerder);
 				
+				Apostador.ordenarApostadores(apostadores);
+				
+			    // Actualizar el modelo de la tabla_2
+			    DefaultTableModel tableModel2 = new DefaultTableModel();
+			    tableModel2.addColumn("Apostadores");
+			    
+			    tableModel2.addRow(new Object[]{"Apostadores"});
+
+			    for (Apostador apostador : apostadores) {
+			        tableModel2.addRow(new Object[]{apostador.getNombre()}); // Reemplaza "getNombre()" con el método apropiado para obtener el nombre del apostador
+			    }
+
+			    table_2.setModel(tableModel2);
+
+			    // Actualizar el modelo de la tabla_3
+			    DefaultTableModel tableModel3 = new DefaultTableModel();
+			    tableModel3.addColumn("Pts. obtenidos");
+			    
+			    tableModel3.addRow(new Object[]{"Pts. obtenidos"});
+
+			    for (Apostador apostador : apostadores) {
+			        tableModel3.addRow(new Object[]{apostador.getPuntos()}); // Reemplaza "getPuntosObtenidos()" con el método apropiado para obtener los puntos del apostador
+			    }
+
+			    table_3.setModel(tableModel3);
+				 
 				
 				
 				
 			}
+			
+
+
+
 		});
+		
+
 		
 		btnGenerar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnGenerar.setBounds(841, 278, 173, 32);
