@@ -1,26 +1,16 @@
 package main;
 
-import java.util.ArrayList;
-
-import Datos.CreadorDeObjetoDb;
-import Datos.LectorDeArchivos;
-import Logica.Apostador;
-import Logica.Partido;
-import Logica.Pronostico;
-import Logica.Ronda;
+import interfaceGrafica.VentanaPrincipal;
 
 public class Main {
 	
 	public static void main(String[] args) {
+			VentanaPrincipal frame = new VentanaPrincipal(args);
+			frame.setVisible(true);
 		
-		
-		
-		
-		
-		
-	}
-		
-
-
+}
 
 }
+
+
+
