@@ -12,17 +12,18 @@ import ClaseErrores.DatoIngresadoVacioException;
 import Datos.CreadorDeObjetoCSV;
 import Datos.LectorDeArchivos;
 import Logica.Apostador;
+import Logica.CalculadorDePuntos;
 import Logica.Ronda;
 
 public class TesteosCreadosObjetosCSV {
 
 	
 	public ArrayList<Apostador> ObtenerApostadores() {
-		LectorDeArchivos lectorArchivosResultado = new LectorDeArchivos("C:\\Users\\Pais Gamer\\git\\neo_becas_utn_integrador\\neo_becas_utn_integrador\\github.com\\matiast86\\neo_becas_utn_integrador.git\\TrabsjoPracticoCurso\\src\\main\\archivoTesteo\\resultadoTesteo.csv");
+		LectorDeArchivos lectorArchivosResultado = new LectorDeArchivos("./src\\main\\archivoTesteo\\resultadoTesteo.csv");
 		lectorArchivosResultado.parsearArchivoResultados();
 		
 ;
-		LectorDeArchivos lectorArchivosPronostico = new LectorDeArchivos("C:\\Users\\Pais Gamer\\git\\neo_becas_utn_integrador\\neo_becas_utn_integrador\\github.com\\matiast86\\neo_becas_utn_integrador.git\\TrabsjoPracticoCurso\\src\\main\\archivoTesteo\\pronosticoTesteo.csv");
+		LectorDeArchivos lectorArchivosPronostico = new LectorDeArchivos("./src\\main\\archivoTesteo\\pronosticoTesteo.csv");
 		lectorArchivosPronostico.parsearArchivoPronosticos();
 		
 		CreadorDeObjetoCSV creadorObjetos = new CreadorDeObjetoCSV(lectorArchivosPronostico.parsearArchivoPronosticos(),lectorArchivosResultado.parsearArchivoResultados());
@@ -50,6 +51,18 @@ public class TesteosCreadosObjetosCSV {
 		  catch (DatoIngresadoVacioException e) {
 				System.out.println("algun valor esta vacio");
 		}
+		
+		try {
+			CalculadorDePuntos calculadora = new CalculadorDePuntos(1,0);
+			calculadora.calcularPuntosDeApostadores(apostadores, rondas);
+		} catch (DatoIngresadoNoEsperado e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
 		
 		return apostadores;
 		
@@ -107,8 +120,11 @@ public class TesteosCreadosObjetosCSV {
 		Apostador apostador1 = apostadores.get(0);
 		Apostador apostador2 = apostadores.get(1);
 		
+		System.out.println(apostador1.getPuntos());
+		System.out.println(apostador2.getPuntos());
 		
-	/*	assertTrue(apostador1.obtenerPuntos()==apostador2.obtenerPuntos());*/
+		
+		assertTrue(apostador1.getPuntos()==apostador2.getPuntos());
 		
 	}
 
