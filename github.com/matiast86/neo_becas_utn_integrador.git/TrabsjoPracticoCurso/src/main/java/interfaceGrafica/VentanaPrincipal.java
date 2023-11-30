@@ -47,7 +47,7 @@ import javax.swing.JSeparator;
 			contentPane.add(lblEquipo);
 			
 			JLabel lblNewLabel = new JLabel("New label");
-			lblNewLabel.setIcon(new ImageIcon("neo_becas_utn_integrador\\github.com\\matiast86\\neo_becas_utn_integrador.git\\TrabsjoPracticoCurso\\src\\main\\archivos\\img-neo.JPG"));
+			lblNewLabel.setIcon(new ImageIcon("./\\src\\main\\archivos\\img-neo.JPG"));
 			lblNewLabel.setBounds(306, 52, 239, 65);
 			contentPane.add(lblNewLabel);
 			

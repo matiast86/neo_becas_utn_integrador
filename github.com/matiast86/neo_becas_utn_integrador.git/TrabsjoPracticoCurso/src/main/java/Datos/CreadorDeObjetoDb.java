@@ -43,13 +43,7 @@ public class CreadorDeObjetoDb {
                 ronda.agregarPartido(partido);
             }
 
-            System.out.println("Resultados:");
-            for (Ronda ronda : rondas) {
-                System.out.println("Ronda " + ronda.getNro() + ":");
-                for (Partido partido : ronda.getPartidos()) {
-                    System.out.println(partido.toString());
-                }
-            }
+
 
         } catch (Exception e) {
             e.printStackTrace();

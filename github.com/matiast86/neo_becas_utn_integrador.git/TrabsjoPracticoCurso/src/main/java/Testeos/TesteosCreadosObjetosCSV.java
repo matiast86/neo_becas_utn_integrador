@@ -110,6 +110,55 @@ public class TesteosCreadosObjetosCSV {
 		
 	}
 		
+	private ArrayList<Apostador> obtenerApostadoresConValorNegativo() {
+		LectorDeArchivos lectorArchivosResultado = new LectorDeArchivos("./src\\main\\archivoTesteo\\resultadoTesteo.csv");
+		lectorArchivosResultado.parsearArchivoResultados();
+		
+;
+		LectorDeArchivos lectorArchivosPronostico = new LectorDeArchivos("./src\\main\\archivoTesteo\\pronosticoTesteoNegativo.csv");
+		lectorArchivosPronostico.parsearArchivoPronosticos();
+		
+		CreadorDeObjetoCSV creadorObjetos = new CreadorDeObjetoCSV(lectorArchivosPronostico.parsearArchivoPronosticos(),lectorArchivosResultado.parsearArchivoResultados());
+		
+		ArrayList<Ronda> rondas = null;
+		
+		try {
+			try {
+				rondas = creadorObjetos.ListarRonda();
+			} catch (DatoIngresadoNoEsperado e) {
+				System.out.println("Los datos ingresados en la parte de gol no puede ser negativos");
+				e.printStackTrace();
+			}
+		} catch (DatoIngresadoVacioException e) {
+			System.out.println("Los datos no pueden estar vacios");
+			e.printStackTrace();
+		}
+		
+		ArrayList<Apostador> apostadores = null;
+
+		try {
+			apostadores = creadorObjetos.listarApostadores(rondas);
+		} catch (DatoIngresadoNoEsperado e)  {
+			System.out.println("valor no esperado");
+		}
+		  catch (DatoIngresadoVacioException e) {
+				System.out.println("algun valor esta vacio");
+		}
+		
+		try {
+			CalculadorDePuntos calculadora = new CalculadorDePuntos(1,5);
+			calculadora.calcularPuntosDeApostadores(apostadores, rondas);
+		} catch (DatoIngresadoNoEsperado e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return apostadores;
+	}
+	
+	
+	
+	
 	
 	
 	@Test
@@ -131,7 +180,23 @@ public class TesteosCreadosObjetosCSV {
 	}
 	
 	
-	
+	@Test
+	public void chequeoControlDePuntosNegativo() {
+		ArrayList<Apostador> apostadores = obtenerApostadoresConValorNegativo();
+		
+
+
+		for (Apostador a : apostadores) {
+			assertTrue(a.getPuntos()<0);
+		}
+		
+		
+		
+		
+	}
+
+
+
 	
 	
 	
