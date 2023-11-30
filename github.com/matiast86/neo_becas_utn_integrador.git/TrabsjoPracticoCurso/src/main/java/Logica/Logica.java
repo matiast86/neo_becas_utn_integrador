@@ -89,39 +89,13 @@ public class Logica {
 		}
         
 		
-		
-		for(Apostador a : apostadores) {
-			
-			System.out.println(a.getNombre() + " = "  + a.getPuntos());
-			
-		}
-		
 			
 			return apostadores;
-			
-			
-			
-	
-
-        
-       
-
-
-        
-        
-
-        
-
-		
-		
-		
-		
-	
-		
-
-		
 	
 	}
+	
+	
+	
 	
 }	
 	

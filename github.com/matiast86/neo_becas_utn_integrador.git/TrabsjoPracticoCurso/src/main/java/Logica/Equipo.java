@@ -18,7 +18,7 @@ public class Equipo {
 	
 	
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 		
 	}
 
@@ -48,6 +48,7 @@ public class Equipo {
 	public String toString() {
 		return "Equipo [nombre=" + nombre + "]";
 	}
-	
+
+
 	
 }

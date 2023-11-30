@@ -71,11 +71,11 @@ public class TesteosCreadosObjetosCSV {
 	
 	
 	public ArrayList<Apostador> ObtenerApostadoresConError(){
-		LectorDeArchivos lectorArchivosResultado = new LectorDeArchivos("C:\\Users\\Pais Gamer\\git\\neo_becas_utn_integrador\\neo_becas_utn_integrador\\github.com\\matiast86\\neo_becas_utn_integrador.git\\TrabsjoPracticoCurso\\src\\main\\archivoTesteo\\resultadoTesteoConError.csv");
+		LectorDeArchivos lectorArchivosResultado = new LectorDeArchivos("./src\\main\\archivoTesteo\\resultadoTesteoConError.csv");
 		lectorArchivosResultado.parsearArchivoResultados();
 		
 ;
-		LectorDeArchivos lectorArchivosPronostico = new LectorDeArchivos("C:\\Users\\Pais Gamer\\git\\neo_becas_utn_integrador\\neo_becas_utn_integrador\\github.com\\matiast86\\neo_becas_utn_integrador.git\\TrabsjoPracticoCurso\\src\\main\\archivoTesteo\\pronosticoTesteo.csv");
+		LectorDeArchivos lectorArchivosPronostico = new LectorDeArchivos("./src\\main\\archivoTesteo\\pronosticoTesteo.csv");
 		lectorArchivosPronostico.parsearArchivoPronosticos();
 		
 		CreadorDeObjetoCSV creadorObjetos = new CreadorDeObjetoCSV(lectorArchivosPronostico.parsearArchivoPronosticos(),lectorArchivosResultado.parsearArchivoResultados());
@@ -119,10 +119,6 @@ public class TesteosCreadosObjetosCSV {
 	
 		Apostador apostador1 = apostadores.get(0);
 		Apostador apostador2 = apostadores.get(1);
-		
-		System.out.println(apostador1.getPuntos());
-		System.out.println(apostador2.getPuntos());
-		
 		
 		assertTrue(apostador1.getPuntos()==apostador2.getPuntos());
 		

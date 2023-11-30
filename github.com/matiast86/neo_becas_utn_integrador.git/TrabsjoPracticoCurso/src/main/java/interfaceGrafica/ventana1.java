@@ -18,6 +18,8 @@ import javax.swing.table.DefaultTableModel;
 
 import Logica.Apostador;
 import Logica.Logica;
+import Logica.Pronostico;
+import Logica.resultadoEnum;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -76,19 +78,19 @@ public class ventana1 extends JFrame {
 		table = new JTable();
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Participante", "Equipo 1", "Gana 1", "Empata", "Gana 2", "Equipo 2"},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
-				{null, null, null, null, null, null},
+				{"Participante","Ronda", "Equipo 1", "Gana 1", "Empata", "Gana 2", "Equipo 2"},
+				{null, null, null, null, null, null,null},
+				{null, null, null, null, null, null,null},
+				{null, null, null, null, null, null,null},
+				{null, null, null, null, null, null,null},
+				{null, null, null, null, null, null,null},
+				{null, null, null, null, null, null,null},
+				{null, null, null, null, null, null,null},
+				{null, null, null, null, null, null,null},
+				{null, null, null, null, null, null,null},
 			},
 			new String[] {
-				"New column", "New column", "New column", "New column", "New column", "New column"
+				"New column","New column", "New column", "New column", "New column", "New column", "New column"
 			}
 		));
 		table.setToolTipText("");
@@ -108,10 +110,10 @@ public class ventana1 extends JFrame {
 		table_1.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"Ronda", "Equipo 1", "Cant. goles 1", "Cant. goels 2", "Equipo 2"},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
+				{"1", "Argentina", "1", "2", "Arabia Saudita"},
+				{"1", "Polonia", "0", "0", "Mexico"},
+				{"1", "Argentina", "2", "0", "Mexico"},
+				{"1", "Arabia Saudita", "0", "2", "Polonia"},
 				{null, null, null, null, null},
 				{null, null, null, null, null},
 				{null, null, null, null, null},
@@ -278,34 +280,17 @@ public class ventana1 extends JFrame {
 				
 				Apostador.ordenarApostadores(apostadores);
 				
-			    // Actualizar el modelo de la tabla_2
-			    DefaultTableModel tableModel2 = new DefaultTableModel();
-			    tableModel2.addColumn("Apostadores");
-			    
-			    tableModel2.addRow(new Object[]{"Apostadores"});
 
-			    for (Apostador apostador : apostadores) {
-			        tableModel2.addRow(new Object[]{apostador.getNombre()}); // Reemplaza "getNombre()" con el método apropiado para obtener el nombre del apostador
-			    }
-
-			    table_2.setModel(tableModel2);
-
-			    // Actualizar el modelo de la tabla_3
-			    DefaultTableModel tableModel3 = new DefaultTableModel();
-			    tableModel3.addColumn("Pts. obtenidos");
-			    
-			    tableModel3.addRow(new Object[]{"Pts. obtenidos"});
-
-			    for (Apostador apostador : apostadores) {
-			        tableModel3.addRow(new Object[]{apostador.getPuntos()}); // Reemplaza "getPuntosObtenidos()" con el método apropiado para obtener los puntos del apostador
-			    }
-
-			    table_3.setModel(tableModel3);
-				 
-				
-				
+				actualizarTablaApostadores();
+			    actualizarTablaPuntos();
+			    actualizarTablasPronosticos();
 				
 			}
+
+
+
+			
+
 			
 
 
@@ -324,4 +309,63 @@ public class ventana1 extends JFrame {
 		
 		
 	}
+	
+	private void  actualizarTablaApostadores() {
+		DefaultTableModel tableModel2 = new DefaultTableModel();
+	    tableModel2.addColumn("Apostadores");
+	    
+	    tableModel2.addRow(new Object[]{"Apostadores"});
+
+	    for (Apostador apostador : apostadores) {
+	        tableModel2.addRow(new Object[]{apostador.getNombre()}); 
+	    }
+	    table_2.setModel(tableModel2);
+	}
+
+	private void actualizarTablaPuntos() {
+		DefaultTableModel tableModel3 = new DefaultTableModel();
+	    tableModel3.addColumn("Pts. obtenidos");
+	    
+	    tableModel3.addRow(new Object[]{"Pts. obtenidos"});
+
+	    for (Apostador apostador : apostadores) {
+	        tableModel3.addRow(new Object[]{apostador.getPuntos()});
+	    }
+
+	    table_3.setModel(tableModel3);
+	}
+
+	
+	private void actualizarTablasPronosticos() {
+		DefaultTableModel tableModelPronostico= new DefaultTableModel();
+		
+		tableModelPronostico.addColumn("Participante");
+		tableModelPronostico.addColumn("Ronda");
+		tableModelPronostico.addColumn("Equipo1");
+		tableModelPronostico.addColumn("Gana1");
+		tableModelPronostico.addColumn("Empato");
+		tableModelPronostico.addColumn("Gana2");
+		tableModelPronostico.addColumn("Equipo2");
+		
+		tableModelPronostico.addRow(new Object[] {"Parcipante","Ronda","Equipo1","Gana1","Empato","Gana2","Equipo2"});
+		
+		
+		for(Apostador apos: apostadores) {
+			
+			for(Pronostico pronos: apos.getPronostico()) {
+				
+				
+				if(pronos.getResultado().equals(resultadoEnum.Empato)) {
+					tableModelPronostico.addRow(new Object[] {apos.getNombre(),pronos.getNumeroRonda(),pronos.getPartido().getEquipo1().getNombre(),null,"X",null,pronos.getPartido().getEquipo2().getNombre()});
+				} else if(pronos.getEquipo().equals(pronos.getPartido().getEquipo1())) {
+						tableModelPronostico.addRow(new Object[] {apos.getNombre(),pronos.getNumeroRonda(),pronos.getPartido().getEquipo1().getNombre(),"X",null,null,pronos.getPartido().getEquipo2().getNombre()}); 
+				} else {
+					tableModelPronostico.addRow(new Object[] {apos.getNombre(),pronos.getNumeroRonda(),pronos.getPartido().getEquipo1().getNombre(),null,null,"X",pronos.getPartido().getEquipo2().getNombre()});
+				}
+			}	
+		}
+		table.setModel(tableModelPronostico);
+	}
+	
+	
 }
